@@ -30,16 +30,13 @@ function Home() {
       name: "PHANTOM II White",
       description: "Intensively immersive."
     },
-  ]
+  ];
 
-  const productCarts = [];
+  const productCarts = products.map((product, i) => {
+    return (<Product style={product.style} name={product.name} description={product.description} key={i+4} />);
+  });
 
-  for (let product of products) {
-    productCarts.push(Product(product.style, product.name, product.description))
-  }
-
-
-
+  
   return (
     <div>
       <main className={styles.main}>
@@ -59,12 +56,12 @@ function Home() {
               <h1 className={styles.h1}>IMPLOSIVE SOUND</h1>
             </div>
             <div className={styles.headerButtons}>
-              {Button("white", "DISCOVER")}
-              {Button("transparent", "BUY")}
+              <Button style="white" text="DISCOVER" key="0" />
+              <Button style="transparent" text="BUY" key="1"/>
             </div>
           </div>
         </header>
-        <NewProduct />
+        <NewProduct key="3" />
         <div className={styles.productsContainer}>
           {productCarts}
         </div>
